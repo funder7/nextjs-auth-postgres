@@ -1,0 +1,9 @@
+{
+    "extends": ["next/typescript"], 
+    "plugins": [ "align-assignments" ],
+    "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "align-assignments/align-assignments": [ 2, { "requiresOnly": false } ],
+        "no-multi-spaces": ["error", { "exceptions": { "VariableDeclarator": true } }]
+    }
+}
