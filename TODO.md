@@ -3,7 +3,7 @@
 ## Libraries // Extensions
 
 1. [Ant UI](https://ant.design) - UI Components
-2. [Formily](https://formilyjs.org/) - Advanced Forms 
+2. [Formily](https://formilyjs.org/) - Advanced Forms
 3. [ahooks](https://ahooks.pages.dev) - React hooks extension
 
 ## Usability
@@ -18,7 +18,6 @@
 3. [react-color](http://casesandberg.github.io/react-color/) - Configurable color picker
 4. [antd-phone-input](https://github.com/typesnippet/antd-phone-input) - Advanced phone input component
 5. [react-pdf](https://github.com/diegomura/react-pdf) - Create PDF files with React
-
 
 ## TBE
 
