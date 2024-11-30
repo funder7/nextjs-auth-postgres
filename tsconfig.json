@@ -18,7 +18,7 @@
     "baseUrl": "./src",
     "paths": {
       "@/components/*": [ "app/_components/*" ],
-       "@/pages/*": [ "pages/*" ],
+      "@/pages/*": [ "pages/*" ],
       "@/app/*": [ "app/*" ],
       "@/lib/*": [ "lib/*" ],
       "@/styles/*": [ "styles/*" ],
@@ -26,6 +26,6 @@
       "auth": [ "lib/auth" ],
     },
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.js"],
   "exclude": ["node_modules"]
 }
