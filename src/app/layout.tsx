@@ -2,7 +2,7 @@ import "./globals.css"
 
 import { GeistSans } from "geist/font/sans"
 
-const title = "Next.js + Postgres Auth Starter"
+const title       = "Next.js + Postgres Auth Starter"
 const description =
   "This is a Next.js starter kit that uses NextAuth.js for simple email + password login and a Postgres database to persist the data."
 
@@ -11,15 +11,13 @@ export const metadata = {
   description,
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={GeistSans.variable}>
-        <main>{children}</main>
+        <main>
+          {children}
+        </main>
       </body>
     </html>
   )
