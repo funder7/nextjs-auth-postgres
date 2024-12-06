@@ -8,7 +8,8 @@
 
 ## Usability
 
-1. [Format.JS](https://formatjs.github.io) - Internationalization management
+1. [Chakra UI LocaleProvider](https://www.chakra-ui.com/docs/components/locale-provider) - Configure Chakra UI locale provider for components
+2. [Format.JS](https://formatjs.github.io) - Internationalization management
    1. [simplelocalize-cli](https://github.com/simplelocalize/simplelocalize-cli) - Manage localization files
 
 ## Extras

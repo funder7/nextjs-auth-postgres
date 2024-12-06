@@ -1,45 +1,62 @@
-import { Form } from "@/components/form";
-import { SubmitButton } from "@/components/submit-button";
-import Link from "next/link";
-import { redirect } from "next/navigation";
-import { createUser, getUser } from "services/user";
+import { Form } from "@/components/form"
+import { SubmitButton } from "@/components/submit-button"
+import { Box, Link as ChakraLink, Flex, Heading, Text, VStack } from '@chakra-ui/react'
+import NextLink from "next/link"
+import { redirect } from "next/navigation"
+import { createUser, getUser } from "services/user"
 
 async function register(formData: FormData) {
-  "use server";
+  "use server"
 
-  const email    = formData.get("email") as string;
-  const password = formData.get("password") as string;
-  const user     = await getUser(email);
+  const email = formData.get("email") as string
+  const password = formData.get("password") as string
+  const user = await getUser(email)
 
   if (user !== null) {
-    return "User already exists"; // TODO: Handle errors with useFormStatus?
+    return "User already exists" // TODO: Handle errors with useFormStatus?
   }
 
-  await createUser(email, password);
-  redirect("/login");
+  await createUser(email, password)
+  redirect("/login")
 }
 
 export default function RegisterPage() {
   return (
-    <div className="flex h-screen w-screen items-center justify-center bg-gray-50">
-      <div className="z-10 w-full max-w-md overflow-hidden rounded-2xl border border-gray-100 shadow-xl">
-        <div className="flex flex-col items-center justify-center space-y-3 border-b border-gray-200 bg-white px-4 py-6 pt-8 text-center sm:px-16">
-          <h3 className="text-xl font-semibold">Sign Up</h3>
-          <p className="text-sm text-gray-500">
+    <Flex width="100vw" height="100vh" alignItems="center" justify="center" backgroundColor="gray.50">
+      <Box
+        zIndex="10"
+        backgroundColor="gray.50"
+        borderColor="gray.100"
+        borderRadius="2xl"
+        shadow="xl"
+        overflow="hidden"
+      >
+        <VStack
+          alignContent="center" alignItems="center" justifyContent="center" textAlign="center"
+          borderColor="gray.200" backgroundColor="white"
+          paddingX="4" paddingY="6" paddingTop="8" gap="3">
+
+          <Heading size="xl" fontWeight="semibold" color="gray.800">Sign Up</Heading>
+          <Text textStyle="sm" color="gray.500">
             Create an account with your email and password
-          </p>
-        </div>
-        <Form action={register}>
-          <SubmitButton>Sign Up</SubmitButton>
-          <p className="text-center text-sm text-gray-600">
-            {"Already have an account? "}
-            <Link href="/login" className="font-semibold text-gray-800">
-              Sign in
-            </Link>
-            {" instead."}
-          </p>
-        </Form>
-      </div>
-    </div>
-  );
+          </Text>
+
+          <Form action={register}>
+            <SubmitButton>
+              Sign Up
+            </SubmitButton>
+            <Text textAlign="center" textStyle="sm" color="gray.500">
+              {"Already have an account? "}
+              <ChakraLink asChild fontWeight="semibold" color="gray.800">
+                <NextLink href="/login">
+                  Sign in
+                </NextLink>
+              </ChakraLink>
+              {" instead."}
+            </Text>
+          </Form>
+        </VStack>
+      </Box>
+    </Flex>
+  )
 }
