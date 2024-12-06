@@ -1,5 +1,4 @@
-import "./globals.css"
-
+import { Provider } from "@/components/ui/provider"
 import { GeistSans } from "geist/font/sans"
 
 const title       = "Next.js + Postgres Auth Starter"
@@ -13,12 +12,10 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={GeistSans.variable}>
-        <main>
-          {children}
-        </main>
-      </body>
+       <Provider>{children}</Provider>   
+       </body>
     </html>
   )
 }

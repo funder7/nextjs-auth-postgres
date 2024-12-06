@@ -1,8 +1,9 @@
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export default function Page() {
   return (
-    <div className="flex h-screen bg-black">
+    <div className="flex h-screen">
       <div className="w-screen h-screen flex flex-col justify-center items-center">
         <svg
           width="283"
@@ -46,11 +47,8 @@ export default function Page() {
           </p>
         </div>
         <div className="flex space-x-3">
-          <Link
-            href="/protected"
-            className="text-stone-400 hover:text-stone-200 hover:no-underline rounded-md border py-2 px-4 transition-all"
-          >
-            Enter Protected Page
+          <Link href="/protected" >
+            <Button>Enter Protected Page</Button>
           </Link>
         </div>
       </div>

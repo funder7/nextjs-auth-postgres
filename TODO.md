@@ -2,7 +2,7 @@
 
 ## Libraries // Extensions
 
-1. [Ant UI](https://ant.design) - UI Components
+1. ~~[Ant UI](https://ant.design)~~ [chakra UI](https://www.chakra-ui.com) - UI Components
 2. [Formily](https://formilyjs.org/) - Advanced Forms
 3. [ahooks](https://ahooks.pages.dev) - React hooks extension
 
