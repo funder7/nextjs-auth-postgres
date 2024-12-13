@@ -17,7 +17,7 @@
     "plugins": [ { "name": "next" } ],
     "baseUrl": "./src",
     "paths": {
-      "@/components/*": [ "app/components/*" ],
+      "@/components/*": [ "components/*" ],
       "@/pages/*": [ "pages/*" ],
       "@/lib/*": [ "lib/*" ],
       "@/styles/*": [ "styles/*" ],
