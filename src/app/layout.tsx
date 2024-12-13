@@ -1,6 +1,12 @@
+/* eslint-disable align-assignments/align-assignments */
 import "./globals.css"
 
-import { GeistSans } from "geist/font/sans"
+import { Geist} from "next/font/google"
+
+const geist = Geist({
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 const title = "Next.js + Postgres Auth Starter"
 const description =
@@ -18,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={GeistSans.variable}>
+      <body className={geist.className}>
         <main>{children}</main>
       </body>
     </html>
