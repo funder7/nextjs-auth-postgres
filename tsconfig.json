@@ -17,10 +17,9 @@
     "plugins": [ { "name": "next" } ],
     "baseUrl": "./src",
     "paths": {
+      "@/actions/*": [ "actions/*" ],
       "@/components/*": [ "components/*" ],
-      "@/pages/*": [ "pages/*" ],
       "@/lib/*": [ "lib/*" ],
-      "@/styles/*": [ "styles/*" ],
       "@/services/*": [ "services/*" ],
       "auth": [ "lib/auth" ],
     },

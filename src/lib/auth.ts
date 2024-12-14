@@ -1,9 +1,9 @@
-import { authConfig } from "@/lib/auth.config";
-import { getUser } from "@/services/user";
-import { compare } from "bcrypt-ts";
+import { authConfig } from "@/lib/auth.config"
+import { getUser } from "@/services/user"
+import { compare } from "bcrypt-ts"
 
-import NextAuth from "next-auth";
-import Credentials from "next-auth/providers/credentials";
+import NextAuth from "next-auth"
+import Credentials from "next-auth/providers/credentials"
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
@@ -17,27 +17,28 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
       authorize: async (credentials) => {
       
-          const username = credentials.username as string;
-          const password = credentials.password as string;
+          const username = credentials.username as string
+          const password = credentials.password as string
 
-          if ( username === null || password === null ) {
-            throw new Error("Credentials must be provided");
+          if ( !username.length || !password.length ) {
+            throw new Error("Credentials are mandatory")
           }
 
           // logic to verify if the user exists
-          const user = await getUser(username);
+          const user = await getUser(username)
 
           const isValidUser = user && await compare(password, user.password)
               
           if (!isValidUser) {
             // No user found // bad password
-            throw new Error("Invalid credentials.");
-          }
+            // throw new Error("Invalid credentials.")
+            return null
+          } 
 
           // Successful login
           // return user object with profile data
-          return { id: user.id, name: user.name, email: user.email };
+          return { id: user.id, name: user.name, email: user.email }
       },
     }),
   ],
-});
+})

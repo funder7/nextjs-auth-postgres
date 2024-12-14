@@ -1,51 +1,19 @@
+'use client'
+
 import { Form } from '@/components/form'
-import { SubmitButton } from '@/components/submit-button'
 import { Alert } from '@/components/ui/alert'
+import { SubmitButton } from '@/components/submit-button'
 import { Box, Link as ChakraLink, Flex, Heading, Text, VStack } from '@chakra-ui/react'
-import { signIn } from 'auth'
-import { CredentialsSignin } from 'next-auth'
 import NextLink from 'next/link'
-import { redirect } from 'next/navigation'
-
-
-let loginFailed = false;
-
-const login = async function(formData: FormData) {
-  "use server"
-
-  try {
-    loginFailed = false;
-
-    const result = await signIn("credentials", {
-      redirectTo: '/protected',
-      username: formData.get("email") as string,
-      password: formData.get("password") as string,
-    })
-
-    console.debug('login RESULT:', result)
-
-    if (result?.ok) {
-      redirect(result.url)
-    }
-    else {
-      loginFailed = true
-      console.error('login failed', result)
-    }
-  }
-  catch (e) {
-    loginFailed = true
-
-    if(e instanceof CredentialsSignin) {
-        // not much to do here (this erro = bad credentials)
-    }
-    else {
-      //throw e // unexpected error
-    }
-  }
-}
+import { useActionState } from 'react'
+import { loginAction } from 'app/actions/login'
+import { signIn } from '@/lib/auth'
 
 
 export default function LoginPage() {
+
+  const [state, action] = useActionState(loginAction, null)
+
   return (
     <Flex
       width="100vw"
@@ -63,7 +31,7 @@ export default function LoginPage() {
         overflow="hidden"
       >
         <Box divideY="1px" divideColor="gray.200">
-          
+
           <Box backgroundColor="white" textAlign="center" paddingX="4" paddingY="6" paddingTop="8" >
             <VStack justifyContent="space-between">
               <Heading size="xl" fontWeight="semibold" color="gray.800">
@@ -76,8 +44,16 @@ export default function LoginPage() {
           </Box>
 
           <Box display="flex" justifyContent="center" py="6">
-            <Form action={login}>
-              <Flex paddingTop="2" spaceY="4" direction="column">
+            <Form action={action}>
+              <Flex paddingTop="2" spaceY="4" direction="column" maxW="initial">
+                {state?.error && (
+                  <Alert
+                    status="error"
+                    title={state.title}
+                    animationDuration="slowest"
+                    animationStyle={{ _open: "slide-fade-in", _closed: "slide-fade-out" }}
+                  >{state.detail}</Alert>
+                )}
                 <SubmitButton>
                   Sign In
                 </SubmitButton>

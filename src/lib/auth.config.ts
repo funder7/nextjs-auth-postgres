@@ -1,6 +1,7 @@
 import { NextAuthConfig } from 'next-auth';
 
 export const authConfig = {
+  debug: process.env.NODE_ENV === 'development',
   pages: {
     signIn: '/login',
   },
@@ -9,6 +10,17 @@ export const authConfig = {
     // while this file is also used in non-Node.js environments
   ],
   callbacks: {
+   
+    /* TODO (if debugging doesn't help):
+    async signIn({ user, account, profile, email, credentials }) 
+      {
+      if(user?.error === 'my custom error') {
+         throw new Error('custom error to the client')
+      }
+      return true
+   },
+   */
+  
     authorized({ auth, request: { nextUrl } }) {
 
       const isLoggedIn    = !!auth?.user;
