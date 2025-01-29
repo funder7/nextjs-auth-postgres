@@ -21,7 +21,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           const password = credentials.password as string
 
           if ( !username.length || !password.length ) {
-            throw new Error("Credentials are mandatory")
+            return null
+            //throw new Error("Credentials are mandatory")
           }
 
           // logic to verify if the user exists

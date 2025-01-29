@@ -7,7 +7,6 @@ import { Box, Link as ChakraLink, Flex, Heading, Text, VStack } from '@chakra-ui
 import NextLink from 'next/link'
 import { useActionState } from 'react'
 import { loginAction } from 'app/actions/login'
-import { signIn } from '@/lib/auth'
 
 
 export default function LoginPage() {

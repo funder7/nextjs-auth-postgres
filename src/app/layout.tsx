@@ -1,5 +1,6 @@
-import { Provider } from "@/components/ui/provider"
 import { Geist} from "next/font/google"
+import { auth } from 'auth'
+import { Providers } from "./providers/Providers"
 
 const geist = Geist({
   subsets: ['latin'],
@@ -15,13 +16,16 @@ export const metadata = {
   description,
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+
+  const session = await auth();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={geist.className}>
-        <Provider>
+        <Providers session={session}>
           <main>{children}</main>
-        </Provider>
+        </Providers>
       </body>
     </html>
   )
